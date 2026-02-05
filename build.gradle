@@ -40,6 +40,9 @@ dependencies {
     // Frontend
     implementation group: 'com.codeborne', name: 'selenide', version: '7.14.0'
 
+    // Backend
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '3.0.0'
+
     // Assert
     implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
 
