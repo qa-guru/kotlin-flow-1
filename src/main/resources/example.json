@@ -1,0 +1,9 @@
+{
+  "browser": {
+    "name": "chrome",
+    "version": "latest"
+  },
+  "env": {
+    "url": "https://www.google.com"
+  }
+}
