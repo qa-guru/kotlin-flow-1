@@ -1,19 +1,32 @@
 import com.codeborne.selenide.Selenide
-import com.codeborne.selenide.Selenide.element
-import io.qameta.allure.TmsLink
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.shouldBe
 import org.example.kotlin.frontend.helpers.BaseUiTest
-import org.junit.jupiter.api.Disabled
+import org.example.kotlin.frontend.pages.MainPage
+import org.example.kotlin.frontend.pages.ProductsPage
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class FirstUITest : BaseUiTest() {
 
     @Test
-    @TmsLink("TEST-1")
-    @Disabled("Just for demonstration purposes")
+    @DisplayName("Проверка названия кофейни на главной странице")
     fun testFirstUI() {
-        val searchInput = element("[name='q']")
-        searchInput.value = "Selenide"
-        searchInput.pressEnter()
-        Selenide.sleep(5000)
+        val title = MainPage()
+            .getTitle()
+
+        title shouldBe "Welcome to Brew & Bean"
+    }
+
+    @Test
+    @DisplayName("Проверка навигации по ссылкам в шапке")
+    fun testNavigation() {
+        MainPage()
+            .header()
+            .clickLink("Products")
+        val products = ProductsPage()
+            .getProducts()
+
+        products.shouldHaveSize(7)
     }
 }
