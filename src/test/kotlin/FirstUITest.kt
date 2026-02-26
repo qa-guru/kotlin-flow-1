@@ -1,9 +1,11 @@
 import com.codeborne.selenide.Selenide
+import com.codeborne.selenide.Selenide.sleep
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import org.example.kotlin.frontend.helpers.BaseUiTest
 import org.example.kotlin.frontend.pages.MainPage
 import org.example.kotlin.frontend.pages.ProductsPage
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -23,10 +25,20 @@ class FirstUITest : BaseUiTest() {
     fun testNavigation() {
         MainPage()
             .header()
-            .clickLink("Products")
+            .clickLink("LolKek")
         val products = ProductsPage()
             .getProducts()
 
         products.shouldHaveSize(7)
+    }
+
+    @Test
+    @DisplayName("Проверка открытия Google")
+    @Disabled("Тест для Remote WebDriver")
+    fun testOpenGoogle() {
+        Selenide.open("https://www.google.com")
+        val title = Selenide.title()
+        sleep(10_000)
+        title shouldBe "Google"
     }
 }
