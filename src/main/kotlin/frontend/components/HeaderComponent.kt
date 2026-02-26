@@ -12,4 +12,9 @@ class HeaderComponent {
         linksHeader.first { it.text == name }.click()
         return this
     }
+
+    @Step("Получить список ссылок в шапке")
+    fun getLinks(): List<String> {
+        return linksHeader.map { it.text }
+    }
 }

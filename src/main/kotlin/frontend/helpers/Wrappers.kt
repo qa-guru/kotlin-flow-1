@@ -10,6 +10,6 @@ class Wrappers {
             return Selectors.by("data-test-group", target)
         }
 
-        fun byDataTestId(target: String) = Selectors.by("data-test-id", target)!!
+        fun byDataTestId(target: String) = Selectors.by("data-test-id", target)
     }
 }
