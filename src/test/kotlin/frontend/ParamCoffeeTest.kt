@@ -14,7 +14,7 @@ class ParamCoffeeTest : BaseUiTest() {
     @ValueSource(strings = ["Products, Orders, Contact, Cart"])
     @DisplayName("Проверка наличия ссылок в шапке: {link}")
     fun testWithValueSource(link: String) {
-        val listLinks = MainPage().header().getLinks()
+        val listLinks = MainPage().navigateHeader().getLinks()
 
         listLinks shouldContain link
     }

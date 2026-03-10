@@ -11,7 +11,7 @@ class SecondUITest : BaseUiTest() {
     @DisplayName("Проверка навигации по ссылкам в шапке")
     fun testNavigation() {
         MainPage()
-            .header()
+            .navigateHeader()
             .clickLink("LolKek")
         val products = ProductsPage()
             .getProducts()

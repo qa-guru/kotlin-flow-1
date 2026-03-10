@@ -6,10 +6,10 @@ import org.openqa.selenium.By
 class Wrappers {
 
     companion object {
-        fun byDataTestGroup(target: String): By {
-            return Selectors.by("data-test-group", target)
+        fun byTestGroup(target: String): By {
+            return Selectors.by("data-test-group", target) // Multiple elements with the same value, used for lists
         }
 
-        fun byDataTestId(target: String) = Selectors.by("data-test-id", target)
+        fun byTestId(target: String) = Selectors.by("data-test-id", target) // Single UNIQ element
     }
 }

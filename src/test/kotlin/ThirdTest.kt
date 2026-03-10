@@ -12,7 +12,7 @@ class ThirdTest : BaseUiTest() {
     @DisplayName("Проверка открытия Google")
     @Disabled("Тест для Remote WebDriver")
     fun testOpenGoogle() {
-        Selenide.open("https://www.google.com")
+//        Selenide.open("https://www.google.com")
         val title = Selenide.title()
         sleep(10_000)
         title shouldBe "Google"
