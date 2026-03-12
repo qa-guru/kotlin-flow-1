@@ -52,6 +52,7 @@ object Config {
             browserVersion = properties.getProperty("browser.version"),
             frontendUrl = properties.getProperty("frontend.url"),
             backendUrl = properties.getProperty("backend.url"),
+            backendApiVersion = properties.getProperty("backend.api.version"),
             moonHost = properties.getProperty("moon.host")
         )
     }
@@ -61,6 +62,7 @@ object Config {
         val browserVersion: String,
         val frontendUrl: String,
         val backendUrl: String,
+        val backendApiVersion: String,
         val moonHost: String,
     )
 }
