@@ -3,10 +3,13 @@ package org.example.kotlin.frontend.helpers
 import com.codeborne.selenide.Configuration
 import com.codeborne.selenide.FileDownloadMode
 import com.codeborne.selenide.Selenide
+import org.example.kotlin.general.TestListener
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.extension.ExtendWith
 
+@ExtendWith(TestListener::class)
 open class BaseUiTest {
 
     init {

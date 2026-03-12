@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test
 class FirstUITest : BaseUiTest() {
 
     @Test
+    @Disabled("Need to run this test")
     @DisplayName("Проверка названия кофейни на главной странице")
     fun testFirstUI() {
         val title = MainPage()

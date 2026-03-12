@@ -35,13 +35,16 @@ test {
 
 dependencies {
     // JUnit
-    implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '6.0.2'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '6.0.3'
+    implementation group: 'org.junit.platform', name: 'junit-platform-engine', version: '6.0.3'
+    implementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '6.0.3'
 
     // Frontend
     implementation group: 'com.codeborne', name: 'selenide', version: '7.14.0'
 
     // Backend
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '3.0.0'
+    implementation group: 'tools.jackson.core', name: 'jackson-databind', version: '3.1.0'
 
     // Assert
     implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
