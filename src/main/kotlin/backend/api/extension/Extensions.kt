@@ -30,5 +30,10 @@ class Extensions {
         inline fun <reified T> Response<T>.getErrorBody(): String {
             return errorBody()?.string() ?: ""
         }
+
+        @Step("String to Bearer token")
+        fun String.toBearer(): String {
+            return "Bearer $this"
+        }
     }
 }

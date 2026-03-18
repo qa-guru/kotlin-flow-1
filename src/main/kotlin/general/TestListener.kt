@@ -3,12 +3,16 @@ package org.example.kotlin.general
 import com.codeborne.selenide.Screenshots
 import com.codeborne.selenide.Selenide
 import io.qameta.allure.Attachment
+import org.example.kotlin.backend.controllers.Controllers
+import org.example.kotlin.backend.helpers.AuthorizationHelper
+import org.example.kotlin.backend.helpers.GarbageCollector
 import org.junit.platform.engine.TestExecutionResult
 import org.junit.platform.launcher.TestExecutionListener
 import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan
 
-class TestListener : TestExecutionListener {
+class TestListener : Controllers(), TestExecutionListener {
+    private val authHelper = AuthorizationHelper()
 
     override fun testPlanExecutionStarted(testPlan: TestPlan) {
         println("|------ Test Plan Started -----|")
@@ -28,8 +32,12 @@ class TestListener : TestExecutionListener {
     }
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) {
-        Selenide.closeWebDriver()
         println("|------ Test Plan Finished -----|")
+        Selenide.closeWebDriver()
+        println("|------ GarbageCollector -----|")
+        GarbageCollector.user.forEach { id ->
+            users.deleteUserById(token = authHelper.getAdminToken(), id = id).also { println("Deleted User: $id") }
+        }
     }
 
     @Attachment(value = "{name}", type = "image/png")
