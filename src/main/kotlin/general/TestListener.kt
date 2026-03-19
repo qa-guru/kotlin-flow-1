@@ -3,6 +3,7 @@ package org.example.kotlin.general
 import com.codeborne.selenide.Screenshots
 import com.codeborne.selenide.Selenide
 import io.qameta.allure.Attachment
+import org.example.kotlin.backend.api.extension.Extensions.Companion.getAsObject
 import org.example.kotlin.backend.controllers.Controllers
 import org.example.kotlin.backend.helpers.AuthorizationHelper
 import org.example.kotlin.backend.helpers.GarbageCollector
@@ -37,6 +38,12 @@ class TestListener : Controllers(), TestExecutionListener {
         println("|------ GarbageCollector -----|")
         GarbageCollector.user.forEach { id ->
             users.deleteUserById(token = authHelper.getAdminToken(), id = id).also { println("Deleted User: $id") }
+        }
+
+        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
+            if (user.email.contains("@autotest.com")) {
+                users.deleteUserById(token = authHelper.getAdminToken(), id = user.id).also { println("Deleted User: ${user.email}") }
+            }
         }
     }
 
