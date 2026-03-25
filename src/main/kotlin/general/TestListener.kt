@@ -36,15 +36,20 @@ class TestListener : Controllers(), TestExecutionListener {
         println("|------ Test Plan Finished -----|")
         Selenide.closeWebDriver()
         println("|------ GarbageCollector -----|")
+
         GarbageCollector.user.forEach { id ->
             users.deleteUserById(token = authHelper.getAdminToken(), id = id).also { println("Deleted User: $id") }
         }
 
-        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
-            if (user.email.contains("@autotest.com")) {
-                users.deleteUserById(token = authHelper.getAdminToken(), id = user.id).also { println("Deleted User: ${user.email}") }
-            }
+        GarbageCollector.products.forEach { id ->
+            products.deleteProductById(token = authHelper.getAdminToken(), id = id).also { println("Deleted Product: $id") }
         }
+
+//        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
+//            if (user.email.contains("@autotest.com")) {
+//                users.deleteUserById(token = authHelper.getAdminToken(), id = user.id).also { println("Deleted User: ${user.email}") }
+//            }
+//        }
     }
 
     @Attachment(value = "{name}", type = "image/png")

@@ -22,7 +22,7 @@ class UsersController: Endpoints() {
     @Step("Create a new user")
     fun createUser(body: CreateUserRequest): Response<CreateUserResponse> {
         return users.createUser(body).execute()
-//            .also { GarbageCollector.user.add(it.getAsObject().id) } // Replaced with all users deletion
+            .also { GarbageCollector.user.add(it.getAsObject().id) }
     }
 
     @Step("Get user with id: {id}")
