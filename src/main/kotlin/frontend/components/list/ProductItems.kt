@@ -14,7 +14,7 @@ class ProductItems {
                     image = it.find(byTestGroup("product-card-image")),
                     name = it.find(byTestGroup("product-card-name")).text,
                     description = it.find(byTestGroup("product-card-description")).text,
-                    price = it.find(byTestGroup("product-card-price")).text.filter { it.isDigit() }.toDouble() / 100,
+                    price = it.find(byTestGroup("product-card-price")).text.filter { it.isDigit() }.toDouble(),
                     btnIncrement = it.find(byTestGroup("product-card-increment")),
                     quantity = it.find(byTestGroup("product-card-qty")).text.toInt(),
                     btnDecrement = it.find(byTestGroup("product-card-decrement")),
