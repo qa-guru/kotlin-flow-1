@@ -47,6 +47,12 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '3.0.0'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.13.2'
 
+    //Database
+    def exposedVersion = "1.1.1"
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.10'
+    implementation group: 'org.jetbrains.exposed', name: 'exposed-core', version: exposedVersion
+    implementation group: 'org.jetbrains.exposed', name: 'exposed-jdbc', version: exposedVersion
+
     // Assert
     implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
 
@@ -55,4 +61,18 @@ dependencies {
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.22'
     implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.33.0'
     implementation group: 'io.qameta.allure', name: 'allure-okhttp3', version: '2.33.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(KotlinCompile) {
+    kotlinOptions {
+        freeCompilerArgs += ["-Xjsr305=strict"]
+    }
+}
+
+tasks.withType(Test).configureEach {
+    systemProperty "file.encoding", "UTF-8"
 }
